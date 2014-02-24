@@ -1,0 +1,13 @@
+{
+  "name": "angular-examples",
+  "version": "0.0.1",
+  "authors": [
+    "Leonardo Vidarte <lvidarte@gmail.com>"
+  ],
+  "description": "Just a collection of angular examples",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.2.13",
+    "angular-route": "~1.2.13"
+  }
+}
