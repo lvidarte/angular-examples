@@ -1,0 +1,16 @@
+<!doctype html>
+<html ng-app>
+<head>
+    <meta charset="utf-8">
+    <title>Filters</title>
+</head>
+<body ng-init="people=[{name: 'Jorge', city: 'Rosario'}, {name: 'Juan', city: 'CABA'}, {name: 'Rosa', city: 'Rosario'}]">
+    <h1>Filters</h1>
+    <input type="text" ng-model="q" />
+    <ul>
+        <li ng-repeat="person in people | filter:q | orderBy:'city'">{{ person.name | uppercase }}, {{ person.city | lowercase }}</li>
+    </ul>
+    Angular doc <a href="http://docs.angularjs.org/api/ng/filter">filter</a>
+    <script src="/bower_components/angular/angular.js"></script>
+</body>
+</html>

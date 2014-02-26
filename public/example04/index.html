@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>Filters</title>
+</head>
+<body>
+    <div ng-controller="PeopleController">
+        <h1>People</h1>
+        Filter: <input type="text" ng-model="q" />
+        <ul>
+            <li ng-repeat="person in people | filter:q | orderBy:'city'">
+                {{ person.name | uppercase }}, {{ person.city | lowercase }}
+            </li>
+        </ul>
+
+        <h3>Add person</h3>
+        name: <input type="text" ng-model="newName" /><br>
+        city: <input type="text" ng-model="newCity" /><br>
+        <button ng-click="addPerson()">Add person</button>
+    </div>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script>
+        var myApp = angular
+                .module('myApp', [])
+                .factory('PeopleFactory', function() {
+                    var people = [
+                        {name: 'Jorge', city: 'Rosario'},
+                        {name: 'Juan' , city: 'CABA'   },
+                        {name: 'Rosa' , city: 'Rosario'}
+                    ];
+                    var factory = {
+                        getPeople: function() {
+                            return people;
+                        }
+                    }
+                    return factory;
+                })
+                .controller('PeopleController', function($scope, PeopleFactory) {
+                    $scope.people = PeopleFactory.getPeople();
+
+                    $scope.addPerson = function() {
+                        $scope.people.push({
+                            name: $scope.newName,
+                            city: $scope.newCity
+                        });
+                    }
+                });
+    </script>
+</body>
+</html>
